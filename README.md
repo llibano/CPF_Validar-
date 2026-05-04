@@ -1,22 +1,76 @@
-# 🧾 Validador de CPF em Python
+# Validador de CPF em Python
 
- Descrição do projeto
-Este projeto em Python tem como objetivo criar um programa simples que recebe um CPF digitado pelo usuário e verifica se ele possui a quantidade correta de dígitos
+Este projeto é um script simples em Python para validar números de CPF (Cadastro de Pessoas Físicas), verificando se eles são válidos de acordo com as regras oficiais.
 
-O programa também remove caracteres especiais como pontos e traços antes da verificação.
+## 📌 Funcionalidades
 
-Funcionamento do programa
+* Remove formatação (`.` e `-`)
+* Verifica se o CPF possui 11 dígitos
+* Rejeita CPFs com todos os números iguais (ex: `11111111111`)
+* Calcula e valida os dois dígitos verificadores
+* Informa se o CPF é válido ou inválido
 
-O usuário digita o CPF através do comando:
+## 🚀 Como usar
 
-## cpf = input("Digite seu CPF: ")
-Em seguida, o programa remove os pontos e traços para deixar apenas os números
-cpf = cpf.replace(".", "").replace("-", "")
-Depois disso, o programa verifica se o CPF possui exatamente 11 dígitos utilizando a função len()
-if len(cpf) != 11:
-Se a quantidade de dígitos for diferente de 11, o programa exibe
-print("CPF inválido!")
-Se o CPF tiver 11 dígitos o programa exibe 
-print("CPF Válido") 
+1. Clone este repositório ou copie o código:
 
-fim do programa !!! 
+```bash
+git clone https://github.com/seu-usuario/validador-cpf.git
+cd validador-cpf
+```
+
+2. Execute o script:
+
+```bash
+python validar_cpf.py
+```
+
+3. Digite o CPF quando solicitado:
+
+```
+Digite seu CPF: 123.456.789-09
+```
+
+4. O sistema retornará:
+
+```
+CPF válido!
+```
+
+ou
+
+```
+CPF inválido!
+```
+
+## 🧠 Como funciona
+
+O algoritmo segue os passos oficiais de validação do CPF:
+
+1. Remove caracteres não numéricos
+2. Verifica o tamanho (11 dígitos)
+3. Calcula o primeiro dígito verificador:
+
+   * Multiplica os 9 primeiros dígitos por pesos decrescentes de 10 a 2
+   * Soma os resultados
+   * Calcula `(soma * 10) % 11`
+4. Calcula o segundo dígito verificador:
+
+   * Multiplica os 10 primeiros dígitos por pesos de 11 a 2
+   * Repete o processo
+
+Se os dígitos calculados coincidirem com os informados, o CPF é válido.
+
+## 📁 Estrutura do projeto
+
+```
+validador-cpf/
+│
+├── validar_cpf.py
+└── README.md
+```
+
+## 📜 Licença
+
+Este projeto é livre para uso e modificação.
+
